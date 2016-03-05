@@ -14,6 +14,7 @@
                  [com.taoensso/sente  "1.8.1"]
                  [environ             "1.0.2"]
                  [com.taoensso/timbre "4.3.1"]
+                 [ring-logger-timbre  "0.7.5"]
                  [herolabs/apns       "0.5.0"]]
   :main ^:skip-aot murakami.core
   :target-path "target/%s"
