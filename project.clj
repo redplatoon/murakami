@@ -9,6 +9,7 @@
                  [http-kit            "2.1.18"]
                  [ring-server         "0.4.0"]
                  [ring/ring-core      "1.4.0"]
+                 [lib-noir            "0.9.9"]
                  [compojure           "1.4.0"]
                  [com.taoensso/sente  "1.8.1"]
                  [environ             "1.0.2"]

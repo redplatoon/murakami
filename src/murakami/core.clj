@@ -1,11 +1,8 @@
 (ns murakami.core
-  (:use org.httpkit.server)
+  (:require [murakami.handler :refer :all])
+  (:use [org.httpkit.server]
+        [compojure.handler :only [site]])
   (:gen-class))
-
-(defn app [req]
-  {:status  200
-   :headers {"Content-Type" "text/html"}
-   :body    "hello HTTP!"})
 
 (defonce server (atom nil))
 
@@ -17,7 +14,7 @@
     (reset! server nil)))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "Run server"
   [& args]
   ;; The #' is useful when you want to hot-reload code
   ;; You may want to take a look: https://github.com/clojure/tools.namespace
