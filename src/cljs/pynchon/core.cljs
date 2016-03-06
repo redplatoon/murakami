@@ -8,12 +8,12 @@
 ;; Views
 
 (defn home-page []
-  [:div [:h2 "Welcome to mykproject"]
-   [:div [:a {:href "/about"} "go to about page"]]])
+  [:div [:h2 "Welcome to Pynchon"]
+   [:div [:a {:href "/app/about"} "go to about page"]]])
 
 (defn about-page []
-  [:div [:h2 "About myproject"]
-   [:div [:a {:href "/"} "go to the home page"]]])
+  [:div [:h2 "About Pynchon"]
+   [:div [:a {:href "/app"} "go to the home page"]]])
 
 (defn current-page []
   [:div [(session/get :current-page)]])
@@ -21,10 +21,10 @@
 ;; -------------------------
 ;; Routes
 
-(secretary/defroute "/" []
+(secretary/defroute "/app" []
   (session/put! :current-page #'home-page))
 
-(secretary/defroute "/about" []
+(secretary/defroute "/app/about" []
   (session/put! :current-page #'about-page))
 
 ;; -------------------------
@@ -34,7 +34,6 @@
   (reagent/render [current-page] (.getElementById js/document "app")))
 
 (defn init! []
-  (js/console.log "HI")
   (accountant/configure-navigation!
     {:nav-handler
      (fn [path]
@@ -45,4 +44,6 @@
   (accountant/dispatch-current!)
   (mount-root))
 
+;---------------------------
+;; Run app
 (init!)
