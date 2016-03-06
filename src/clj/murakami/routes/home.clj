@@ -21,7 +21,9 @@
      (include-css "/css/site.css")]
     [:body
      mount-target
-     (include-js "/js/out/goog/base.js" "/js/app.js")]))
+     (include-js "/js/out/goog/base.js" "/js/app.js")
+     [:div#count]
+     [:div#total]]))
 
 (defroutes home-routes
   (GET "/" []

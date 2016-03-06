@@ -80,3 +80,38 @@
       (<! (async/timeout 10000))
       (broadcast! i)
       (recur (inc i)))))
+
+
+;;;;;; DEMO EXAMPLES
+
+;;;; Some server>user async push examples
+
+(defn start-example-broadcaster!
+  "As an example of server>user async pushes, setup a loop to broadcast an
+  event to all connected users every 10 seconds"
+  []
+  (let [broadcast!
+        (fn [i]
+          (timbre/debug "Broadcasting server>user: %s" @connected-uids)
+          (doseq [uid (:any @connected-uids)]
+            (chsk-send! uid
+              [:some/broadcast
+               {:what-is-this "An async broadcast pushed from server"
+                :how-often "Every 1 seconds"
+                :to-whom uid
+                :i i}])))]
+
+    (go-loop [i 0]
+      (<! (async/timeout 1000))
+      (broadcast! i)
+      (recur (inc i)))))
+
+(defn test-fast-server>user-pushes
+  "Quickly pushes 100 events to all connected users. Note that this'll be
+  fast+reliable even over Ajax!"
+  []
+  (doseq [uid (:any @connected-uids)]
+    (doseq [i (range 100)]
+      (chsk-send! uid [:fast-push/is-fast (str "hello " i "!!")]))))
+
+(comment (test-fast-server>user-pushes))

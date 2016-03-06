@@ -2,6 +2,7 @@
   (:require-macros
     [cljs.core.async.macros :as asyncm :refer (go go-loop)])
   (:require
+    [pynchon.views   :as views]
     [taoensso.timbre :as timbre :refer-macros (tracef debugf infof warnf errorf)]
     [taoensso.encore :as encore :refer ()]
     [cljs.core.async :as async :refer (<! >! put! chan)]
@@ -50,6 +51,7 @@
 
 (defmethod -event-msg-handler :chsk/recv
   [{:as ev-msg :keys [?data]}]
+  (views/update-broadcast-count (:i (get ?data 1)))
   (->output! "Push event from server: %s" ?data))
 
 (defmethod -event-msg-handler :chsk/handshake

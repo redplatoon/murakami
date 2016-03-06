@@ -40,4 +40,7 @@
   (timbre/info "Starting server on port 8080")
   (start-server!)
   (timbre/info "Starting websocket router")
-  (start-router!))
+  (start-router!)
+  ;; websocket demo
+  (timbre/info "Starting demo websocket broadcaster")
+  (socket/start-example-broadcaster!))
