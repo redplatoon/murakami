@@ -6,6 +6,7 @@
   :source-paths ["src/clj"]
   :plugins [[lein-ring      "0.9.7"]
             [lein-environ   "1.0.2"]
+            [lein-figwheel  "0.5.0-6"]
             [lein-cljsbuild "1.1.2"]]
   :dependencies [[org.clojure/clojure       "1.8.0"]
                  [org.clojure/clojurescript "1.7.228"]
@@ -18,7 +19,12 @@
                  [environ                   "1.0.2"]
                  [com.taoensso/timbre       "4.3.1"]
                  [ring-logger-timbre        "0.7.5"]
-                 [herolabs/apns             "0.5.0"]]
+                 [herolabs/apns             "0.5.0"]
+                 [secretary                 "1.2.3"]
+                 [venantius/accountant      "0.1.7"]
+                 [reagent-utils             "0.1.7"]
+                 [hiccup                    "1.0.5"]
+                 [reagent                   "0.6.0-alpha"]]
   :main ^:skip-aot murakami.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}}
@@ -26,9 +32,12 @@
     {:builds
       [{:id "pynchon"
         :source-paths ["src/cljs"]
+        :figwheel true
         :compiler {
-          :output-to "resources/public/pynchon/pynchon.js"
-          :output-dir "resources/public/pynchon/out"
+          :main "pynchon.core"
+          :asset-path "js/out"
+          :output-to "resources/public/js/app.js"
+          :output-dir "resources/public/js/out"
           :optimizations :none
-          :externs ["resources/public/pynchon/js/helpers.js"]
+          :externs ["resources/public/js/helpers.js"]
           :source-map true}}]})
