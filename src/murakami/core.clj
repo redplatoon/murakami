@@ -1,6 +1,7 @@
 (ns murakami.core
   (:require [murakami.handler   :refer :all]
-            [ring.logger.timbre :as logger])
+            [ring.logger.timbre :as logger]
+            [taoensso.timbre    :as timbre])
   (:use [org.httpkit.server]
         [compojure.handler :only [site]])
   (:gen-class))
@@ -20,4 +21,5 @@
   ;; The #' is useful when you want to hot-reload code
   ;; You may want to take a look: https://github.com/clojure/tools.namespace
   ;; and http://http-kit.org/migration.html#reload
+  (timbre/info "Starting server on port 8080")
   (reset! server (run-server (logger/wrap-with-logger app) {:port 8080})))
