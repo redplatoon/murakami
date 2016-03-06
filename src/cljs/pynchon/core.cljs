@@ -1,8 +1,9 @@
 (ns pynchon.core
-    (:require [reagent.core    :as reagent :refer [atom]]
-              [reagent.session :as session]
-              [secretary.core  :as secretary :include-macros true]
-              [accountant.core :as accountant]))
+    (:require [reagent.core      :as reagent :refer [atom]]
+              [reagent.session   :as session]
+              [pynchon.websocket :as ws]
+              [secretary.core    :as secretary :include-macros true]
+              [accountant.core   :as accountant]))
 
 ;; -------------------------
 ;; Views
@@ -46,4 +47,10 @@
 
 ;---------------------------
 ;; Run app
-(init!)
+
+(defn start! []
+  (init!)
+  (ws/start-router!))
+
+(defonce _start-once (start!))
+

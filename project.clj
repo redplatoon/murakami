@@ -24,7 +24,9 @@
                  [venantius/accountant      "0.1.7"]
                  [reagent-utils             "0.1.7"]
                  [hiccup                    "1.0.5"]
-                 [reagent                   "0.6.0-alpha"]]
+                 [reagent                   "0.6.0-alpha"]
+                 [org.clojure/core.async    "0.2.374"]
+                 [com.taoensso/encore       "2.41.0"]]
   :main ^:skip-aot murakami.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}}
