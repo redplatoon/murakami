@@ -1,7 +1,8 @@
 (ns murakami.routes.home
-  (:require [ring.util.response :as resp]
-            [hiccup.page        :refer [include-js include-css html5]]
-            [environ.core       :refer [env]])
+  (:require [ring.util.response  :as resp]
+            [hiccup.page         :refer [include-js include-css html5]]
+            [environ.core        :refer [env]]
+            [murakami.utils.core :refer :all])
   (:use     [compojure.core]))
 
 (def mount-target
@@ -27,11 +28,10 @@
 
 (defroutes home-routes
   (GET "/" []
-    (resp/status
-      {:body
-        {:message
-         "It's dangerous to go alone. Take this! c=[====>"}}
-      200))
+    (OK {:message "It's dangerous to go alone. Take this! c=[====>"}))
+
+  (GET "/poo" []
+    (OK {:message-break "LIMIT BREAK"}))
 
   (GET "/app" [] loading-page)
   (GET "/app/about" [] loading-page))

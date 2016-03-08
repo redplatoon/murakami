@@ -1,8 +1,9 @@
 (ns murakami.handler
   (:require [compojure.core                 :refer [defroutes]]
-            [murakami.routes.home           :refer [home-routes]]            [murakami.routes.home :refer [home-routes]]
+            [murakami.routes.home           :refer [home-routes]]
             [murakami.routes.websocket      :refer [websocket-routes]]
             [noir.util.middleware           :refer [app-handler]]
+            [camel-snake-kebab.core         :refer :all]
             [ring.middleware.keyword-params :as keyword-params]
             [compojure.route                :as route]
             [taoensso.timbre :as timbre
@@ -27,3 +28,5 @@
         :formats [:json :edn :transit-json]))
     ring.middleware.keyword-params/wrap-keyword-params
     ring.middleware.params/wrap-params))
+
+(->snake_case 'flux-capacitor)

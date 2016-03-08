@@ -27,6 +27,7 @@
                  [hiccup                    "1.0.5"]
                  [reagent                   "0.6.0-alpha"]
                  [org.clojure/core.async    "0.2.374"]
+                 [camel-snake-kebab         "0.3.2"]
                  [com.taoensso/encore       "2.41.0"]]
   :main ^:skip-aot murakami.core
   :target-path "target/%s"
