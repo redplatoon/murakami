@@ -30,7 +30,8 @@
   (GET "/" []
     (OK {:message "It's dangerous to go alone. Take this! c=[====>"}))
 
-  (GET "/snake_case" []
+  ;;async
+  (GET "/snake_case" req
     (OK {:message-break "LIMIT BREAK"}))
 
   (GET "/app" [] loading-page)

@@ -15,7 +15,7 @@
                  [ring/ring-core            "1.4.0"]
                  [alaisi/postgres.async     "0.6.0"]
                  [lib-noir                  "0.9.9"]
-                 [compojure                 "1.4.0"]
+                 [compojure                 "1.5.0"]
                  [com.taoensso/sente        "1.8.1"]
                  [environ                   "1.0.2"]
                  [com.taoensso/timbre       "4.3.1"]
@@ -28,6 +28,9 @@
                  [reagent                   "0.6.0-alpha"]
                  [org.clojure/core.async    "0.2.374"]
                  [camel-snake-kebab         "0.3.2"]
+                 [criterium                 "0.4.4"]
+                 [clojurewerkz/spyglass     "1.1.0"]
+                 [cheshire                  "5.5.0"]
                  [com.taoensso/encore       "2.41.0"]]
   :main ^:skip-aot murakami.core
   :target-path "target/%s"

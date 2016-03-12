@@ -51,6 +51,7 @@
 
 (defmethod -event-msg-handler :chsk/recv
   [{:as ev-msg :keys [?data]}]
+  ;;demo updater
   (views/update-broadcast-count (:i (get ?data 1)))
   (->output! "Push event from server: %s" ?data))
 

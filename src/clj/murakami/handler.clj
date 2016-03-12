@@ -24,9 +24,6 @@
     (routes
       websocket-routes
       (app-handler
-        [home-routes base-routes]
-        :formats [:json :edn :transit-json]))
+        [home-routes base-routes]))
     ring.middleware.keyword-params/wrap-keyword-params
     ring.middleware.params/wrap-params))
-
-(->snake_case 'flux-capacitor)
