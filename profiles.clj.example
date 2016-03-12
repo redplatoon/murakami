@@ -1,8 +1,9 @@
 {:dev
   {:env
-    {:hostname "db.example.com"
-     :port 5432
-     :database "exampledb"
-     :username "user"
-     :password "pass"
-     :pool-size 25}}}
+    {:hostname   "db.example.com"
+     :port       5432
+     :database   "exampledb"
+     :username   "user"
+     :password   "pass"
+     :pool-size  25
+     :hot-reload true}}}

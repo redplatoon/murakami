@@ -3,15 +3,24 @@
             [murakami.services.websocket :as socket]
             [taoensso.sente              :as sente]
             [ring.logger.timbre          :as logger]
-            [taoensso.timbre             :as timbre])
-  (:use     [org.httpkit.server]
-            [compojure.handler :only [site]])
+            [ring.middleware.reload      :as reload]
+            [taoensso.timbre             :as timbre]
+            [environ.core                :refer [env]])
+  (:use     [org.httpkit.server])
   (:gen-class))
 
 (defonce server (atom nil))
 
 (defn- start-server! []
-  (reset! server (run-server (logger/wrap-with-logger app) {:port 8080})))
+  (reset!
+    server
+    (run-server
+      (if (read-string (env :hot-reload))
+        (-> #'app
+            logger/wrap-with-logger
+            reload/wrap-reload)
+        (logger/wrap-with-logger #'app))
+      {:port 8080})))
 
 (defn- stop-server! []
   (when-not (nil? @server)
@@ -40,7 +49,7 @@
   (timbre/info "Starting server on port 8080")
   (start-server!)
   (timbre/info "Starting websocket router")
-  (start-router!)
+  (start-router!))
   ;; websocket demo
-  (timbre/info "Starting demo websocket broadcaster")
-  (socket/start-example-broadcaster!))
+  ;;(timbre/info "Starting demo websocket broadcaster")
+  ;;(socket/start-example-broadcaster!))

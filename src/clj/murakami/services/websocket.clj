@@ -81,9 +81,6 @@
       (broadcast! i)
       (recur (inc i)))))
 
-
-;;;;;; DEMO EXAMPLES
-
 ;;;; Some server>user async push examples
 
 (defn start-example-broadcaster!

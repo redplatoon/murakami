@@ -13,6 +13,7 @@
                  [http-kit                  "2.1.18"]
                  [ring-server               "0.4.0"]
                  [ring/ring-core            "1.4.0"]
+                 [ring/ring-devel           "1.4.0"]
                  [alaisi/postgres.async     "0.6.0"]
                  [lib-noir                  "0.9.9"]
                  [compojure                 "1.5.0"]
